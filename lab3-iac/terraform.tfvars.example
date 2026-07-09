@@ -1,0 +1,12 @@
+# Copy to terraform.tfvars (gitignored) and fill in real values.
+# Find your public IP:  curl ifconfig.me   (then append /32)
+
+admin_ip       = "203.0.113.10/32"
+admin_username = "azureadmin"
+admin_password = "REPLACE-with-a-strong-password"   # or pass via env: TF_VAR_admin_password
+location       = "eastus"
+
+tags = {
+  environment = "lab"
+  owner       = "glen"
+}

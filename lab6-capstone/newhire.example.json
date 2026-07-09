@@ -1,0 +1,22 @@
+{
+  "displayName": "Jordan Blake",
+  "mailNickname": "jordan.blake",
+  "jobTitle": "Cloud Support Analyst",
+  "department": "IT",
+  "manager": "ben.cho@yourtenant.onmicrosoft.com",
+  "usageLocation": "US",
+  "licenseSkuPartNumber": "ENTERPRISEPREMIUM",
+  "groups": [
+    "IT-Ops-Test",
+    "Intune-Compliance-Windows"
+  ],
+  "azureRbac": [
+    {
+      "role": "Reader",
+      "scopeResourceGroup": "rg-lab2-identity"
+    }
+  ],
+  "sharedMailboxes": [
+    "helpdesk@yourtenant.onmicrosoft.com"
+  ]
+}

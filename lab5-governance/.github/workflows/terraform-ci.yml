@@ -1,0 +1,44 @@
+name: terraform-ci
+
+# Validates every Terraform slice on push / PR. Store Azure creds as repo
+# secrets (Settings -> Secrets and variables -> Actions): ARM_CLIENT_ID,
+# ARM_CLIENT_SECRET, ARM_SUBSCRIPTION_ID, ARM_TENANT_ID. Never commit them.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dir: [lab3-iac, lab5-governance]
+    defaults:
+      run:
+        working-directory: ${{ matrix.dir }}
+    env:
+      ARM_CLIENT_ID:       ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET:   ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID:       ${{ secrets.ARM_TENANT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.5
+
+      - name: Format check
+        run: terraform fmt -check -recursive
+
+      - name: Init (no backend in CI)
+        run: terraform init -backend=false
+
+      - name: Validate
+        run: terraform validate

@@ -1,0 +1,86 @@
+# ==========================================================================
+#  .gitignore — Terraform + PowerShell + Microsoft 365 / Azure lab series
+#  Goal: never commit state, secrets, credentials, or provider binaries.
+# ==========================================================================
+
+# ----------------------------- Terraform ----------------------------------
+# Local .terraform directories (provider plugins, modules)
+**/.terraform/*
+.terraform.lock.hcl.bak
+
+# State files — may contain secrets; never commit
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Saved plan output (can contain sensitive values)
+*.tfplan
+tfplan
+*.tfplan.*
+
+# Variable files that hold secrets / environment-specific values
+*.tfvars
+*.tfvars.json
+!example.tfvars          # keep a sanitized example if you add one
+
+# CLI config / override files
+.terraformrc
+terraform.rc
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ----------------------------- Credentials --------------------------------
+# Service principal / auth material — NEVER commit these
+azureauth.json
+*credentials*.json
+*.pem
+*.pfx
+*.key
+*.publishsettings
+sp.json
+.env
+.env.*
+!.env.example
+
+# ----------------------------- PowerShell ---------------------------------
+# Exported secrets / tokens / sessions
+*.clixml
+*.secret
+*.token
+*ExportedCredential*
+
+# Module output / build artifacts
+output/
+*.psd1.bak
+
+# ----------------------- Lab data & reports -------------------------------
+# CSV exports created by the labs (compliance reports, user lists, logs)
+# Comment these out if you WANT to keep sample outputs in the repo.
+intune-compliance-report.csv
+onboarding-log.json
+*audit*.csv
+users-real.csv          # keep users.csv template; ignore real PII exports
+
+# ----------------------------- Editors ------------------------------------
+.vscode/
+.idea/
+*.code-workspace
+
+# ----------------------------- OS files -----------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ----------------------------- Misc ---------------------------------------
+*.log
+*.tmp
+
+# Agent / assistant project instructions — keep out of the public repo
+CLAUDE.md
+.claude/
