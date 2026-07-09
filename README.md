@@ -405,7 +405,7 @@ Once all six labs are complete, package the Terraform configs and PowerShell scr
 ## Author
 
 **Glen Page** — Cloud Engineer (Microsoft Azure) · CompTIA Security+
-Retired Port Authority of NY & NJ Police Officer (1998–2020) transitioning into cloud engineering, with hands-on Azure experience since January 2024 and 22 years of operational leadership, incident response, and regulatory compliance experience.
+Hands-on Microsoft Azure experience since January 2024, focused on Terraform/IaC, Microsoft Entra ID and RBAC, endpoint management, governance, and PowerShell automation.
 
 - Location: Monroe, NY
 - Email: 251841062+glenpagesr-dev@users.noreply.github.com
