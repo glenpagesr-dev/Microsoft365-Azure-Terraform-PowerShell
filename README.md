@@ -328,6 +328,54 @@ Install-Module ExchangeOnlineManagement -Scope CurrentUser
 
 ---
 
+## Setup (verified toolchain)
+
+This lab series was built and tested on **macOS (Intel)** with the toolchain
+below. The exact versions are recorded so the environment is reproducible; any
+recent release should work equally well.
+
+| Tool | Version tested | Install (macOS / Homebrew) |
+|------|----------------|----------------------------|
+| Git | 2.55 | `brew install git` (or Xcode CLT) |
+| Azure CLI | 2.87.0 | `brew install azure-cli` |
+| Terraform | 1.15.7 | `brew tap hashicorp/tap && brew install hashicorp/tap/terraform` |
+| GitHub CLI | 2.96.0 | `brew install gh` |
+| Visual Studio Code | 1.128.0 | `brew install --cask visual-studio-code` |
+| PowerShell 7 | 7.6.3 | download the `*-osx-x64.pkg` (Intel) from the [PowerShell releases page](https://github.com/PowerShell/PowerShell/releases/latest) |
+
+> **PowerShell on macOS:** Homebrew no longer ships a stable `powershell` cask,
+> so install from the official `.pkg`. On Apple Silicon use the `*-osx-arm64.pkg`
+> instead of `-osx-x64`.
+
+Then install the PowerShell modules (run inside `pwsh`):
+
+| Module | Version tested |
+|--------|----------------|
+| Az | 16.1.0 |
+| Microsoft.Graph | 2.38.0 |
+| ExchangeOnlineManagement | 3.10.0 |
+
+```powershell
+Install-Module Az -Scope CurrentUser
+Install-Module Microsoft.Graph -Scope CurrentUser
+Install-Module ExchangeOnlineManagement -Scope CurrentUser
+```
+
+> **Tip:** If a module install prompts about installing from an untrusted
+> repository, answer **A** (Yes to All). To skip that prompt entirely, first run
+> `Set-PSRepository -Name PSGallery -InstallationPolicy Trusted`.
+
+In VS Code, install the **HashiCorp Terraform** and **PowerShell** extensions
+for syntax highlighting, linting, and IntelliSense.
+
+Verify everything with the Lab 1 preflight script:
+
+```powershell
+./lab1-setup/Verify-Toolchain.ps1
+```
+
+---
+
 ## Repository Structure
 
 ```text
